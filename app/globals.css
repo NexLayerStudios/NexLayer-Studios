@@ -50,7 +50,6 @@
   h5,
   h6,
   .font-bold, .font-semibold, .font-montserrat, .font-header {
-    @apply font-montserrat font-bold;
     font-family: var(--font-header);
     font-weight: 700;
     letter-spacing: -0.03em;
