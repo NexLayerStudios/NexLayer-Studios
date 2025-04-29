@@ -140,7 +140,7 @@ export default function Services() {
                   : initial
               }
               transition={{ delay: 0.2 + index * 0.14, duration: 0.8, type: "spring", stiffness: 40, damping: 10 }}
-              className="service-card p-6 bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg will-change-transform"
+              className="p-6 bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg will-change-transform"
               style={{
                 transition: "transform 0.1s ease-out",
                 transformStyle: "preserve-3d",

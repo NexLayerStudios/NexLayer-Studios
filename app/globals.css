@@ -232,53 +232,23 @@
 
   /* GLOSSY 3D CARD STYLES */
   .service-card, .process-3d-card, .card-3d {
-    background: linear-gradient(135deg, rgba(60,50,110,0.92) 0%, rgba(30,25,50,0.98) 100%);
-    border-radius: 2.5rem;
-    box-shadow:
-      0 8px 32px 0 rgba(31, 38, 135, 0.18),
-      0 1.5px 8px 0 rgba(170, 72, 255, 0.10),
-      0 1px 2px rgba(255,255,255,0.08) inset,
-      0 -1px 2px rgba(0,0,0,0.18) inset,
-      0 10px 30px -10px rgba(0,0,0,0.5);
+    background: #23213c;
+    border-radius: 16px;
+    box-shadow: 0 1px 2px rgba(255,255,255,0.05) inset, 0 -1px 2px rgba(0,0,0,0.2) inset, 0 10px 30px -10px rgba(0,0,0,0.5);
+    border: 1px solid #2d2d39;
     position: relative;
     overflow: hidden;
-    transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-      background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .service-card::before, .process-3d-card::before, .card-3d::before {
-    content: "";
-    position: absolute;
-    top: 0.7rem;
-    left: 1.2rem;
-    width: 70%;
-    height: 30%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.32) 0%, rgba(255,255,255,0.08) 100%);
-    border-radius: 2.5rem 2.5rem 1.5rem 1.5rem;
-    filter: blur(1.5px);
-    opacity: 0.7;
-    pointer-events: none;
-    z-index: 2;
-  }
-
+  .service-card::before, .process-3d-card::before, .card-3d::before,
   .service-card::after, .process-3d-card::after, .card-3d::after {
-    content: "";
-    position: absolute;
-    bottom: 0.7rem;
-    right: 1.2rem;
-    width: 60%;
-    height: 18%;
-    background: linear-gradient(120deg, rgba(255,255,255,0.13) 0%, rgba(255,255,255,0.01) 100%);
-    border-radius: 1.5rem 1.5rem 2.5rem 2.5rem;
-    filter: blur(2.5px);
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 2;
+    display: none !important;
   }
 
   .service-card, .process-3d-card, .card-3d {
-    backdrop-filter: blur(2.5px) saturate(1.2);
-    -webkit-backdrop-filter: blur(2.5px) saturate(1.2);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .icon-3d {
@@ -537,4 +507,11 @@ html {
   font-weight: 800;
   font-style: normal;
   font-display: swap;
+}
+
+/* Fix Next Layer text overlap on desktop */
+@media (min-width: 769px) {
+  .layer-word {
+    left: 120px !important;
+  }
 }

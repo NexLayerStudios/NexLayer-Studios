@@ -146,7 +146,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="card-3d p-6">
+            <div className="p-6">
               <div className="flex items-start gap-6 mb-8">
                 <div className="flex-shrink-0">
                   <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center icon-3d">

@@ -115,7 +115,7 @@ export default function Process() {
             >
               <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                 <div
-                  className={`process-3d-card p-6 inline-block bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg will-change-transform`}
+                  className={`p-6 inline-block bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg will-change-transform`}
                   style={{
                     transition: "transform 0.1s ease-out",
                     transformStyle: "preserve-3d",
