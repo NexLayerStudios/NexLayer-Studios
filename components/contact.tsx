@@ -177,7 +177,7 @@ export default function Contact() {
             }
             transition={{ duration: 0.6 }}
           >
-            <div className="p-8">
+            <div className="card-3d p-8">
               <form
                 action="https://formspree.io/f/mjkwgroj"
                 method="POST"

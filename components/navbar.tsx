@@ -39,9 +39,19 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
     }
   }
 
+  // Debounce utility
+  function debounce(func: (...args: any[]) => void, wait: number) {
+    let timeout: NodeJS.Timeout
+    return (...args: any[]) => {
+      clearTimeout(timeout)
+      timeout = setTimeout(() => func(...args), wait)
+    }
+  }
+
   // On scroll, update indicator to the section closest to the center of the viewport
   useEffect(() => {
-    const handleScroll = () => {
+    let lastActiveIndex = -1
+    const handleScroll = debounce(() => {
       const sections = navItems.map(item => document.getElementById(item.id))
       const viewportCenter = window.innerHeight / 2
       let minDistance = Infinity
@@ -58,12 +68,19 @@ export default function Navbar({ activeSection, onSectionClick }: NavbarProps) {
           }
         }
       }
-      moveIndicatorToIndex(activeIndex)
-    }
+      if (activeIndex !== lastActiveIndex) {
+        moveIndicatorToIndex(activeIndex)
+        lastActiveIndex = activeIndex
+      }
+    }, 60)
     window.addEventListener('scroll', handleScroll)
+    window.addEventListener('resize', handleScroll)
     // Set on mount
     handleScroll()
-    return () => window.removeEventListener('scroll', handleScroll)
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('resize', handleScroll)
+    }
   }, [])
 
   // On nav button click, scroll and animate indicator

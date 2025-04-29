@@ -20,26 +20,27 @@ export default function Process() {
     const cards = document.querySelectorAll(".process-3d-card")
 
     cards.forEach((card) => {
-      const title = card.querySelector(".process-title")
-      const desc = card.querySelector(".process-desc")
+      const title = card.querySelector(".process-title") as HTMLElement | null
+      const desc = card.querySelector(".process-desc") as HTMLElement | null
 
       card.addEventListener("mousemove", (e) => {
-        const rect = card.getBoundingClientRect()
-        const x = e.clientX - rect.left
-        const y = e.clientY - rect.top
+        const event = e as MouseEvent
+        const rect = (card as HTMLElement).getBoundingClientRect()
+        const x = event.clientX - rect.left
+        const y = event.clientY - rect.top
         const centerX = rect.width / 2
         const centerY = rect.height / 2
 
         const rotateX = ((y - centerY) / centerY) * 20
         const rotateY = ((x - centerX) / centerX) * -20
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`
+        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`
         if (title) title.style.transform = `translate(${rotateY * -1}px, ${rotateX}px)`
         if (desc) desc.style.transform = `translate(${rotateY * -0.5}px, ${rotateX * 0.5}px)`
       })
 
       card.addEventListener("mouseleave", () => {
-        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)"
+        (card as HTMLElement).style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)"
         if (title) title.style.transform = "translate(0px, 0px)"
         if (desc) desc.style.transform = "translate(0px, 0px)"
       })
@@ -115,7 +116,7 @@ export default function Process() {
             >
               <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"}`}>
                 <div
-                  className={`p-6 inline-block bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg will-change-transform`}
+                  className={`process-3d-card p-6 inline-block bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg will-change-transform`}
                   style={{
                     transition: "transform 0.1s ease-out",
                     transformStyle: "preserve-3d",
@@ -139,11 +140,12 @@ export default function Process() {
 
               <div className="relative flex items-center justify-center md:w-20">
                 <div
-                  className="w-12 h-12 rounded-full bg-primary/10 border border-primary flex items-center justify-center z-10 md:absolute md:left-1/2 md:top-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1/2 process-number"
+                  className="w-12 h-12 rounded-full bg-primary/10 border border-primary flex items-center justify-center z-10 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2 process-number"
                   tabIndex={0}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
                   <div className="w-8 h-8 rounded-full bg-background flex items-center justify-center">
-                    <span className="text-primary font-bold">{index + 1}</span>
+                    <span className="text-primary font-bold flex items-center justify-center w-full h-full text-center">{index + 1}</span>
                   </div>
                 </div>
               </div>

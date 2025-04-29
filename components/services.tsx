@@ -118,7 +118,7 @@ export default function Services() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 service-card bg-[#1b1b22] border border-[#2d2d39] rounded-2xl shadow-lg p-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {services.map((service, index) => {
           // Dramatic directional animation for each card
           let initial = { opacity: 0, x: 0, y: 0, scale: 0.8, rotate: 0 };
