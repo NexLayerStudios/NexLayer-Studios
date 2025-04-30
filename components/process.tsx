@@ -34,7 +34,8 @@ export default function Process() {
         const rotateX = ((y - centerY) / centerY) * 20
         const rotateY = ((x - centerX) / centerX) * -20
 
-        (card as HTMLElement).style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`
+        const transformStr = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.08)`;
+        (card as HTMLElement).style.transform = transformStr;
         if (title) title.style.transform = `translate(${rotateY * -1}px, ${rotateX}px)`
         if (desc) desc.style.transform = `translate(${rotateY * -0.5}px, ${rotateX * 0.5}px)`
       })
